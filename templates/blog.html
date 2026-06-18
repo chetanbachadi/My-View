@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Posts - My-View{% endblock %}
+
+{% block extra_css %}
+<style>
+    .blog-container{
+        background-color: rgb(237, 237, 239);
+    }
+    h3{
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bolder;
+    }
+    h1{
+      font-family:'Times New Roman', Times, serif;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="blog-container container my-5 py-4 px-4">
+  <h1 class="mb-4 text-center fw-bold">My Blog Posts</h1>
+  <div class="row">
+    {% for blog in blogs %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        {% if blog.image %}
+        <img src="{{ blog.image.url }}" class="card-img-top" alt="{{ blog.title }}" style="height: 200px; object-fit: cover;">
+        {% endif %}
+        <div class="card-body">
+          <h3 class="card-title">{{ blog.title }}</h3>
+          <p class="card-text">
+            {{ blog.content|truncatewords:30 }}
+          </p>
+        </div>
+        <div class="card-footer text-muted">
+          Posted on {{ blog.created_at|date:"M d, Y" }}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No blog posts available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

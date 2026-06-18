@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - My-View{% endblock %}
+
+{% block extra_css %}
+<style>
+@keyframes typing {
+  from { width: 0; }
+  to { width: 20ch; } /* Adjust for character count */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typing-effect {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(24px, 5vw, 50px); /* Responsive font */
+  width: 0;
+  border-right: 3px solid black;
+  animation:
+    typing 4s steps(18, end) forwards,
+    blink 0.7s step-end infinite;
+  animation-delay: 0s, 0s;
+  animation-fill-mode: forwards, forwards;
+  vertical-align: bottom;
+  max-width: 100%;
+  letter-spacing: 4px;
+}
+
+.typing-complete {
+  border-right: none;
+}
+
+.hero-section {
+  background-image: url('{% static "img/bg.jpg" %}');
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .typing-effect {
+    font-size: clamp(20px, 7vw, 40px);
+  }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section text-center">
+  <div class="container">
+    <h1 class="typing-effect fw-bold">Welcome to My-View</h1>
+    <p class="lead fw-semibold">Read the latest articles on tech, life, and more!</p>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const text = document.querySelector('.typing-effect');
+  setTimeout(() => {
+    text.classList.add('typing-complete');
+  }, 4000); // Match typing animation duration
+});
+</script>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Contact - My-View{% endblock %}
+
+{% block extra_css %}
+<style>
+.contact-container {
+    background-color: rgb(237, 237, 239);
+    padding: 2rem;
+}
+
+.borderless {
+    border: none;
+    border-bottom: 1px solid #333;
+    background-color: transparent;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="contact-container container my-5">
+    <h1 class="mb-4 text-center fw-bold">Let me know what's on your mind</h1>
+
+    {% if submitted %}
+    <div class="alert alert-success">Thank you for your opinion!</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3 form-row d-flex fw-bold">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" name="first_name" class="borderless" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="borderless" required>
+            </div>
+        </div>
+
+        <div class="mb-3 fw-bold">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="borderless" required>
+        </div>
+
+        <div class="mb-3 fw-bold">
+            <label class="form-label">Leave a message for us....</label>
+            <textarea name="opinion" class="borderless" rows="4" required></textarea>
+        </div>
+
+        <div class="text-center py-3">
+            <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

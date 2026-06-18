@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - My-View{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-container{
+        background-color: rgb(237, 237, 239);
+    }
+    h1{
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container about-container my-5 py-4 px-4">
+    <h1 class="mb-4 text-center fw-bold">About Us</h1>
+    <div class="row align-items-center">
+        <!-- Text Section -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <p>
+                Welcome to <strong>My-View</strong> — your go-to destination for fresh, thoughtful, and insightful blog
+                content. Whether you're a tech enthusiast, a curious learner, or someone who enjoys exploring new
+                perspectives on life, you're in the right place.
+            </p>
+
+            <p>
+                Our mission is to create a space where ideas thrive. From the latest in technology and web development
+                to personal growth, productivity, and digital wellness — we cover the topics that matter in today's
+                fast-paced world. Every post is carefully crafted to inform, inspire, and ignite meaningful
+                conversations.
+            </p>
+
+            <p>
+                At <strong>My-View</strong>, we believe in lifelong learning and the power of community. Our blog is a
+                mix of tutorials, tips, experiences, and curated thoughts by writers who are passionate about making
+                knowledge accessible to everyone.
+            </p>
+
+            <p>
+                Whether you're here to read a quick how-to, dive deep into a tech trend, or just enjoy a dose of
+                motivation, we’re glad you stopped by. We’re growing every day — and so is our community. Thank you for
+                being a part of our journey.
+            </p>
+
+            <p>
+                Stay curious. Stay inspired.
+            </p>
+
+            <p>
+                — The My-View Team
+            </p>
+        </div>
+        <!-- Image Section -->
+        <div class="col-lg-6 col-md-12 text-center">
+            <a href="http://127.0.0.1:8000/admin/login/?next=/admin/"><img src="{% static 'img/admin.jpg' %}" alt="admin photo" class="img-fluid image-animate" width="500"
+                style="border-radius: 50%;"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
